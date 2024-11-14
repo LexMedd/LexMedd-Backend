@@ -4,7 +4,9 @@ import com.lexmedd.backend.iam.domain.model.commands.SignInCommand;
 import com.lexmedd.backend.iam.domain.model.commands.SignUpCommand;
 import com.lexmedd.backend.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -31,6 +33,7 @@ public class User extends AuditableAbstractAggregateRoot<User> {
 
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
 
     @NotBlank

@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.lexmedd.backend.iam.application.internal.outboundservices.hashing.HashingService;
+import com.lexmedd.backend.iam.application.internal.outboundservices.tokens.TokenService;
 import com.lexmedd.backend.iam.domain.model.aggregates.User;
 import com.lexmedd.backend.iam.domain.model.commands.SignInCommand;
 import com.lexmedd.backend.iam.domain.model.commands.SignUpCommand;
@@ -13,17 +15,33 @@ import com.lexmedd.backend.iam.infrastructure.persistence.jpa.repositories.UserR
 @Service
 public class UserCommandServiceImpl implements UserCommandService {
     private final UserRepository userRepository;
+    private final TokenService tokenService;
+    private final HashingService hashingService;
 
-    public UserCommandServiceImpl(UserRepository userRepository) {
+    public UserCommandServiceImpl(UserRepository userRepository, TokenService tokenService,
+            HashingService hashingService) {
         this.userRepository = userRepository;
+        this.tokenService = tokenService;
+        this.hashingService = hashingService;
     }
 
     @Override
     public Optional<User> handle(SignUpCommand command) {
-        var user = new User(command);
+        var hashedCommand = new SignUpCommand(
+                command.username(),
+                hashingService.encode(command.password()),
+                command.name(),
+                command.surname(),
+                command.gender(),
+                command.email(),
+                command.phone(),
+                command.country(),
+                command.profession());
 
-        if (userRepository.existsByEmail(user.getEmail()))
-            throw new IllegalArgumentException("User already exists");
+        var user = new User(hashedCommand);
+
+        if (userRepository.existsByEmail(command.email()))
+            throw new IllegalArgumentException("Email already in use");
 
         var createdUser = userRepository.save(user);
 
@@ -31,16 +49,17 @@ public class UserCommandServiceImpl implements UserCommandService {
     }
 
     @Override
-    public Optional<User> handle(SignInCommand command) {
+    public String handle(SignInCommand command) {
         var user = userRepository.findByEmail(command.email());
 
         if (user.isEmpty())
             throw new IllegalArgumentException("User not found");
 
-        if (!user.get().getPassword().equals(command.password()))
+        if (!hashingService.matches(command.password(), user.get().getPassword()))
             throw new RuntimeException("Invalid password");
 
-        return user;
+        var token = tokenService.generateToken(user.get().getEmail());
+        return token;
     }
 
 }

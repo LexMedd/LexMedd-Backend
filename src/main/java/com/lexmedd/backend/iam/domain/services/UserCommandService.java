@@ -9,5 +9,5 @@ import com.lexmedd.backend.iam.domain.model.commands.SignUpCommand;
 public interface UserCommandService {
     Optional<User> handle(SignUpCommand command);
 
-    Optional<User> handle(SignInCommand command);
+    String handle(SignInCommand command);
 }

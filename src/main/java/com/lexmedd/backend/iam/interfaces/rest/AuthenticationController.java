@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lexmedd.backend.iam.domain.services.UserCommandService;
+import com.lexmedd.backend.iam.interfaces.rest.resources.AuthenticatedUserResource;
 import com.lexmedd.backend.iam.interfaces.rest.resources.SignInResource;
 import com.lexmedd.backend.iam.interfaces.rest.resources.SignUpResource;
 import com.lexmedd.backend.iam.interfaces.rest.resources.UserResource;
@@ -44,13 +45,17 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResource> signIn(@RequestBody SignInResource resource) {
+    public ResponseEntity<AuthenticatedUserResource> signIn(@RequestBody SignInResource resource) {
         var SignInCommand = SignInCommandFromResourceAssembler.fromResource(resource);
-        var user = userCommandService.handle(SignInCommand);
-        if (user.isEmpty())
+
+        var token = userCommandService.handle(SignInCommand);
+
+        if (token.isEmpty())
             return ResponseEntity.badRequest().build();
-        var userResource = UserResourceFromEntityAssembler.toResourceFromEntity(user.get());
-        return new ResponseEntity<>(userResource, HttpStatus.OK);
+
+        var authenticatedUserResource = new AuthenticatedUserResource(token);
+
+        return new ResponseEntity<>(authenticatedUserResource, HttpStatus.OK);
 
     }
 }
