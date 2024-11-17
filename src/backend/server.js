@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Define los datos de los doctores (esto podría ser una base de datos en un caso real)
 const doctors = [
   {
     name: 'Dr. Juan Pérez',
@@ -34,12 +33,10 @@ const doctors = [
   }
 ];
 
-// Ruta para obtener los doctores
 app.get('/api/doctors', (req, res) => {
   res.json(doctors);  // Devuelve la lista de doctores en formato JSON
 });
 
-// Inicia el servidor
 app.listen(port, () => {
   console.log(`Backend running at http://localhost:${port}`);
 });
