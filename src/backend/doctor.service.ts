@@ -10,7 +10,7 @@ export class DoctorService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para obtener la lista de doctores desde el backend
+ 
   getDoctors(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
