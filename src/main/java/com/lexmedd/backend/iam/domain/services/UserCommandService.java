@@ -10,4 +10,6 @@ public interface UserCommandService {
     Optional<User> handle(SignUpCommand command);
 
     String handle(SignInCommand command);
+
+    Optional<User> findById(Long id);
 }

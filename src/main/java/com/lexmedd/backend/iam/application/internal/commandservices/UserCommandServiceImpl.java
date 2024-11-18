@@ -62,4 +62,10 @@ public class UserCommandServiceImpl implements UserCommandService {
         return token;
     }
 
+    @Override
+    public Optional<User> findById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.lexmedd.backend.contact.domain.model.aggregates;
 
 import com.lexmedd.backend.contact.domain.model.commands.CreateContactCommand;
-import com.lexmedd.backend.iam.domain.User;
+import com.lexmedd.backend.iam.domain.model.aggregates.User;
 import com.lexmedd.backend.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

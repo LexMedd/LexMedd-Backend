@@ -4,8 +4,9 @@ import com.lexmedd.backend.contact.domain.model.aggregates.Contact;
 import com.lexmedd.backend.contact.domain.model.commands.CreateContactCommand;
 import com.lexmedd.backend.contact.domain.services.ContactCommandService;
 import com.lexmedd.backend.contact.infrastructure.persistence.jpa.repositories.ContactRepository;
-import com.lexmedd.backend.iam.domain.User;
-import com.lexmedd.backend.iam.repository.UserRepository;
+import com.lexmedd.backend.iam.domain.model.aggregates.User;
+import com.lexmedd.backend.iam.infrastructure.persistence.jpa.repositories.UserRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
