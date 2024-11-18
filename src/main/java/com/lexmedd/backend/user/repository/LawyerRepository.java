@@ -1,4 +1,3 @@
-
 package com.lexmedd.backend.user.repository;
 
 import com.lexmedd.backend.user.domain.model.Lawyer;
