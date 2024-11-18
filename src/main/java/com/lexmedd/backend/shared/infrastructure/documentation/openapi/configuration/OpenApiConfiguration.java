@@ -27,10 +27,8 @@ public class OpenApiConfiguration {
                         .description("FromZero wiki Documentation")
                         .url("https://examify.wiki.github.io/docs"));
 
-
         // Add security scheme
-
-        /*final String securitySchemeName = "bearerAuth";
+        final String securitySchemeName = "bearerAuth";
 
         openApi.addSecurityItem(new SecurityRequirement()
                         .addList(securitySchemeName))
@@ -42,7 +40,6 @@ public class OpenApiConfiguration {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")));
 
-         */
         return openApi;
     }
 }
