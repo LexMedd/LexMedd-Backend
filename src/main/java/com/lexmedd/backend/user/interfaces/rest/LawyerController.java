@@ -1,8 +1,8 @@
-package com.lexmedd.backend.user.test;
+package com.lexmedd.backend.user.interfaces.rest;
 
 import com.lexmedd.backend.shared.interfaces.rest.resources.MessageResource;
-import com.lexmedd.backend.user.domain.model.Lawyer;
-import com.lexmedd.backend.user.service.LawyerService;
+import com.lexmedd.backend.user.domain.model.aggregates.Lawyer;
+import com.lexmedd.backend.user.domain.services.LawyerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

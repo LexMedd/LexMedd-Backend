@@ -18,17 +18,17 @@ public class OpenApiConfiguration {
         var openApi = new OpenAPI();
         openApi
                 .info(new Info()
-                        .title("FromZero API")
-                        .description("FromZero application REST API documentation.")
+                        .title("Lexmedd API")
+                        .description("Lexmedd application REST API documentation.")
                         .version("v1.0.0")
                         .license(new License().name("Apache 2.0")
                                 .url("https://springdoc.org")))
                 .externalDocs(new ExternalDocumentation()
                         .description("FromZero wiki Documentation")
-                        .url("https://examify.wiki.github.io/docs"));
+                        .url("https://Lexmedd.wiki.github.io/docs"));
 
         // Add security scheme
-        final String securitySchemeName = "bearerAuth";
+        /*final String securitySchemeName = "bearerAuth";
 
         openApi.addSecurityItem(new SecurityRequirement()
                         .addList(securitySchemeName))
@@ -40,6 +40,7 @@ public class OpenApiConfiguration {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")));
 
+         */
         return openApi;
     }
 }

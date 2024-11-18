@@ -1,6 +1,6 @@
 package com.lexmedd.backend.user.test;
-import com.lexmedd.backend.user.domain.model.Doctor;
-import com.lexmedd.backend.user.domain.model.Lawyer;
+import com.lexmedd.backend.user.domain.model.aggregates.Doctor;
+import com.lexmedd.backend.user.domain.model.aggregates.Lawyer;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

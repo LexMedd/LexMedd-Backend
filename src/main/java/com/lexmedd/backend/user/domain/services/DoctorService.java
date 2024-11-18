@@ -1,7 +1,7 @@
-package com.lexmedd.backend.user.service;
+package com.lexmedd.backend.user.domain.services;
 
-import com.lexmedd.backend.user.domain.model.Doctor;
-import com.lexmedd.backend.user.repository.DoctorRepository;
+import com.lexmedd.backend.user.domain.model.aggregates.Doctor;
+import com.lexmedd.backend.user.infrastructure.persistence.jpa.repositories.DoctorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

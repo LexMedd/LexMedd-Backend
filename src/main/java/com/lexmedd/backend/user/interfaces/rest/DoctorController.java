@@ -1,8 +1,8 @@
-package com.lexmedd.backend.user.test;
+package com.lexmedd.backend.user.interfaces.rest;
 
 import com.lexmedd.backend.shared.interfaces.rest.resources.MessageResource;
-import com.lexmedd.backend.user.domain.model.Doctor;
-import com.lexmedd.backend.user.service.DoctorService;
+import com.lexmedd.backend.user.domain.model.aggregates.Doctor;
+import com.lexmedd.backend.user.domain.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

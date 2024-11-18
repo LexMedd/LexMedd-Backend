@@ -1,4 +1,4 @@
-package com.lexmedd.backend.user.domain.model;
+package com.lexmedd.backend.user.domain.model.aggregates;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Lawyer {
+public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,14 +14,11 @@ public class Lawyer {
     private String name;
     private String email;
     private String password;
-    private String subscription;
-    private int yearsOfExperience;
     private String specialization;
-    private int casesWon;
-    private double price;
+    private String place;
 
     // Constructor vacío
-    public Lawyer() {}
+    public Doctor() {}
 
     // Getters y Setters
     public Long getId() {
@@ -56,22 +53,6 @@ public class Lawyer {
         this.password = password;
     }
 
-    public String getSubscription() {
-        return subscription;
-    }
-
-    public void setSubscription(String subscription) {
-        this.subscription = subscription;
-    }
-
-    public int getYearsOfExperience() {
-        return yearsOfExperience;
-    }
-
-    public void setYearsOfExperience(int yearsOfExperience) {
-        this.yearsOfExperience = yearsOfExperience;
-    }
-
     public String getSpecialization() {
         return specialization;
     }
@@ -80,19 +61,11 @@ public class Lawyer {
         this.specialization = specialization;
     }
 
-    public int getCasesWon() {
-        return casesWon;
+    public String getPlace() {
+        return place;
     }
 
-    public void setCasesWon(int casesWon) {
-        this.casesWon = casesWon;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPlace(String place) {
+        this.place = place;
     }
 }

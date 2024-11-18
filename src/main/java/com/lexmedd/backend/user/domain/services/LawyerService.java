@@ -1,7 +1,7 @@
-package com.lexmedd.backend.user.service;
+package com.lexmedd.backend.user.domain.services;
 
-import com.lexmedd.backend.user.domain.model.Lawyer;
-import com.lexmedd.backend.user.repository.LawyerRepository;
+import com.lexmedd.backend.user.domain.model.aggregates.Lawyer;
+import com.lexmedd.backend.user.infrastructure.persistence.jpa.repositories.LawyerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
