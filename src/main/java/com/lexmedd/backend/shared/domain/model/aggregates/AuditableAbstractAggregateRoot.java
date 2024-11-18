@@ -1,3 +1,5 @@
+/* package com.lexmedd.backend.shared.domain.model.aggregates;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -14,6 +16,7 @@ public class AuditableAbstractAggregateRoot<T extends AbstractAggregateRoot<T>> 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
@@ -22,3 +25,4 @@ public class AuditableAbstractAggregateRoot<T extends AbstractAggregateRoot<T>> 
     @LastModifiedDate
     @Column(nullable = false)
     private Date updatedAt;
+}*/
